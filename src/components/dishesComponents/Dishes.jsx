@@ -1,5 +1,15 @@
+import Dish from "./Dish";
+import dishesData from "../../dataDishes";
+
 const Dishes = () => {
-  return <h2>dishes</h2>;
+  return (
+    <>
+      {dishesData.map((item) => {
+        const { id, name, img, price } = item;
+        return <Dish id={id} name={name} img={img} price={price} />;
+      })}
+    </>
+  );
 };
 
 export default Dishes;
