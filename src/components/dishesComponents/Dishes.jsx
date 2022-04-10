@@ -1,13 +1,20 @@
 import Dish from "./Dish";
 import dishesData from "../../dataDishes";
+import { useSelector } from "react-redux";
+import { getSelectedCategory } from "../../redux/dishesSlice";
 
 const Dishes = () => {
+  const selectedCategory = useSelector(getSelectedCategory);
   return (
     <>
-      {dishesData.map((item) => {
-        const { id, name, img, price } = item;
-        return <Dish id={id} name={name} img={img} price={price} />;
-      })}
+      {dishesData
+        .filter((dish) => {
+          return selectedCategory === dish.category;
+        })
+        .map((item) => {
+          const { id, name, img, price } = item;
+          return <Dish id={id} name={name} img={img} price={price} />;
+        })}
     </>
   );
 };
