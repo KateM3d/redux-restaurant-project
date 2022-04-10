@@ -9,6 +9,9 @@ const Dishes = () => {
     <>
       {dishesData
         .filter((dish) => {
+          if (selectedCategory === "ALL") {
+            return true;
+          }
           return selectedCategory === dish.category;
         })
         .map((item) => {
